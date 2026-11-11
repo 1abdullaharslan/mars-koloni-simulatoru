@@ -1,0 +1,15 @@
+# Derlenmiş dosyalar
+mars_koloni
+*.exe
+*.o
+*.out
+
+# Rapor üreticisi ve ara dosyaları (yalnızca Rapor.pdf paylaşılır)
+rapor/
+
+# Ödev yönergesi ve yerel notlar
+Algoritma ve Programlama Ödev.pdf
+VIDEO_SENARYOSU.md
+
+# Sistem dosyaları
+.DS_Store
