@@ -23,7 +23,7 @@ Proje, *Algoritma ve Programlama* dersi kapsamında **Abdullah Arslan** (öğren
 - Üç zorluk seviyesi (Kolay, Normal, Zor); başlangıç değerlerini ve olay eşiklerini değiştirir.
 - `switch–case` ile komut sistemi; büyük/küçük harf duyarsızlığı `case 'g': case 'G':` biçiminde fall-through ile sağlanır.
 - Sağlık, enerji, oksijen, su, yedek parça, modül hasarı, hava kilidi, gün ve tur takibi.
-- Tüm rastgele olaylarda `srand(time(NULL))` ve `rand() % 100`; her zar ve eşik değeri ekrana yazılır (`Zar: 37 / Eşik: 45 -> BAŞARILI`).
+- Tüm rastgele olaylarda `srand(time(NULL))` ve `rand() % 100`; her zar ve eşik değeri ekrana yazılır (`Zar: 37 / Esik: 45 -> BASARILI`).
 - `for` döngüsüyle kum fırtınası (`break` ve `continue` dahil), `do–while` döngüsüyle sınırlı denemeli hava kilidi şifresi.
 - Oyun nasıl biterse bitsin sonuç raporu ve puan.
 
@@ -32,8 +32,11 @@ Proje, *Algoritma ve Programlama* dersi kapsamında **Abdullah Arslan** (öğren
 - **5 oynanabilir karakter:** Her birinin bir pasif ve bir aktif (`Y`) yeteneği vardır.
 - **Mars Kredisi (MK) ekonomisi:** Keşiflerden, fırtına verilerinden ve `M` komutuyla üstlenilen Mars görevlerinden kredi kazanılır.
 - **Kıyafet mağazası (`S`):** Kazanılan krediyle, krediniz yettiği kadar kıyafet alınır. Kıyafetler canı artırır ve kalıcı koruma sağlar.
-- **Sağlam giriş okuma:** Harf yerine sayı, çok karakterli giriş veya dosya sonu (EOF) programı kilitlemez.
-- **Windows desteği:** Türkçe karakterler Windows konsolunda da doğru görünür (`SetConsoleOutputCP(65001)`).
+- **Oyunun amacı ekranı:** Karakter seçiminden önce oyuncuya ne yapması gerektiği maddeler hâlinde anlatılır.
+- **Günlük hikâye:** Her günün sonunda, o gün seçilen üç işleme ve sonuçlarına göre karakterin gününü anlatan kısa bir hikâye yazılır.
+- **Gece olayları:** İşler çok iyi gidiyorsa geceleri volkan fırtınası, başarısız acil görev, güneş patlaması veya Mars depremi gibi olaylar çıkar; bunlar enerji harcatır ama hiçbir şey kazandırmaz.
+- **Giriş kontrolü:** Sayı yerine harf girilmesi, fazladan karakterler veya girişin bitmesi (Ctrl+D / Ctrl+Z) programı kilitlemez.
+- **Her konsolda düzgün görünüm:** Program çıktılarında Türkçe karakter kullanılmadığı için yazılar Windows, macOS ve Linux konsollarında bozulmaz.
 
 ## Derleme ve çalıştırma
 
@@ -55,14 +58,14 @@ mars_koloni.exe
 
 **Dev-C++ / Code::Blocks / Visual Studio:** `mars_koloni.c` dosyasını yeni bir C projesine ekleyip derleyin.
 
-Kod `-Wall -Wextra -pedantic -Wconversion -Wshadow` bayraklarıyla uyarısız derlenir.
+Kod `-std=c99 -Wall -Wextra -pedantic` bayraklarıyla uyarısız derlenir.
 
 ## Nasıl oynanır?
 
-Oyun başında önce zorluk seviyesi, ardından karakter seçilir. Sonra her turda tek harfli bir komut girilir. Her komutun öncesinde güncel durum özeti gösterilir:
+Oyun başında önce zorluk seviyesi seçilir; ardından oyunun amacı anlatılır ve karakter seçilir. Sonra her turda tek harfli bir komut girilir. Her komutun öncesinde güncel durum özeti gösterilir:
 
 ```text
-[Gün 3/15 | Tur 7 | Sağlık 82 | Enerji 72 | Oksijen 36 | Su 16 | Parça 2 | Hasar 0 | Kredi 80 MK]
+[Gun 3/15 | Tur 7 | Saglik 82 | Enerji 72 | Oksijen 36 | Su 16 | Parca 2 | Hasar 0 | Kredi 80 MK]
 Komut >
 ```
 
@@ -83,7 +86,7 @@ Komut >
 | `B` | Komut listesi. | Hayır |
 | `Q` | Çıkış ve sonuç raporu. | — |
 
-Tanımsız bir komut girildiğinde uyarı verilir ve tur harcanmaz. Komutlar büyük/küçük harf duyarsızdır.
+Tanımsız bir komut girildiğinde uyarı verilir ve tur harcanmaz. Komutlar büyük/küçük harf duyarsızdır. Birden fazla harf yazılırsa yalnızca ilk harf okunur.
 
 ### Zorluk seviyeleri
 
@@ -102,11 +105,11 @@ Tanımsız bir komut girildiğinde uyarı verilir ve tur harcanmaz. Komutlar bü
 
 | Karakter | Pasif yetenek | Aktif yetenek (`Y`) |
 |---|---|---|
-| **Kerem Aydın** – Mühendis | *Usta Eller:* tamir +10 hasar onarır, tamir 10 yerine 5 enerji harcar. | *Acil Kaynak:* parça harcamadan modül hasarını 25 azaltır. |
-| **Elif Yıldız** – Jeolog | *Maden Gözü:* keşifte parça bulma şansı +10, görev ödülleri +%25. | *Derin Sondaj:* +2 yedek parça, +4 su ve +20 MK. |
-| **Selin Kaya** – Doktor | *Saha Hekimi:* dinlenmede +10 ek sağlık, yaralanma hasarı yarıya iner. | *Acil Müdahale:* anında +30 sağlık. |
-| **Mert Demir** – Kimyager | *Verimli Reaktör:* oksijen üretimi 8 yerine 5 enerji, su bulma şansı +5. | *Elektroliz:* su harcamadan +6 oksijen. |
-| **Ayşe Çelik** – Pilot | *Fırtına Avcısı:* fırtınada korunma eşiği +15, görev başarısı +10. | *Rover Seferi:* +6 su ve +25 MK. |
+| **Abdullah** – Mühendis | *Usta Eller:* tamir +10 hasar onarır, tamir 10 yerine 5 enerji harcar. | *Acil Kaynak:* parça harcamadan modül hasarını 25 azaltır. |
+| **Selçuk** – Jeolog | *Maden Gözü:* keşifte parça bulma şansı +10, görev ödülleri +%25. | *Derin Sondaj:* +2 yedek parça, +4 su ve +20 MK. |
+| **Recep** – Doktor | *Saha Hekimi:* dinlenmede +10 ek sağlık, yaralanma hasarı yarıya iner. | *Acil Müdahale:* anında +30 sağlık. |
+| **Emo** – Kimyager | *Verimli Reaktör:* oksijen üretimi 8 yerine 5 enerji, su bulma şansı +5. | *Elektroliz:* su harcamadan +6 oksijen. |
+| **Ece** – Pilot | *Fırtına Avcısı:* fırtınada korunma eşiği +15, görev başarısı +10. | *Rover Seferi:* +6 su ve +25 MK. |
 
 Aktif yetenekler en erken 3 günde bir kullanılabilir ve 10–15 enerji harcar.
 
@@ -147,6 +150,8 @@ Mağaza, krediniz yettiği sürece alışverişe devam etmenizi sağlar. Kredini
 
 - Geçerli her komut tur sayacını 1 artırır (`D`, `B` ve tanımsız komutlar hariç).
 - Her 3 turda bir (`tur % 3 == 0`) yeni gün başlar: oksijen 8 azalır, modül hasarı 70'in üzerindeyse ayrıca 5 sağlık kaybedilir.
+- Gün bittiğinde o günün **günlüğü** yazılır: Günün üç işlemi `gunlukKomut[3]` ve `gunlukSonuc[3]` dizilerinde tutulur, `gunlukYazdir()` fonksiyonu bunları `for` ve `switch` ile hikâyeye çevirir.
+- Ardından **gece olayı** için zar atılır. Sağlık ≥ 70, enerji ≥ 60 ve oksijen ≥ 50 ise kötü olay eşiği 35, değilse 15'tir. Kötü olaylar 10–15 enerji harcatır ve hiçbir şey kazandırmaz.
 - Sağlık veya oksijen 0'a düşerse oyun kaybedilir.
 - 15. gün tamamlandığında (45. tur) kurtarma ekibi gelir ve oyun kazanılır.
 - Oyun her nasıl biterse bitsin, hayatta kalınan gün, toplam tur, son durum değerleri, ekonomi özeti ve puan yazdırılır.
@@ -174,12 +179,14 @@ Gün katsayısı 100 seçildi; çünkü oyunun asıl hedefi hayatta kalmaktır v
 | Hava kilidi şifresi | `do–while`, tek mantıksal ifade, `'A' + (gun % 26)` | `case 'H'` |
 | 0–100 sınırlandırması | Her komuttan sonra `if` blokları | Ana döngü sonu |
 | Gün akışı ve oyun sonu | `tur % 3 == 0`, `\|\|` | Ana döngü sonu |
+| Günlük hikâye (ek) | Dizi, `for`, `switch`, fonksiyon | `gunlukYazdir()` |
+| Gece olayları (ek) | `&&`, `rand() % 100`, `switch` | Ana döngü sonu |
 
 Kodun ayrıntılı açıklaması proje raporundadır (`Rapor.pdf`).
 
 ## Test
 
-- Kod `-std=c99 -Wall -Wextra -pedantic -Wconversion -Wshadow` bayraklarıyla uyarısız derlenir.
+- Kod `-std=c99 -Wall -Wextra -pedantic` bayraklarıyla uyarısız derlenir.
 - Program `-fsanitize=address,undefined` ile derlenip bütün komutlar ve geçersiz girişlerle çalıştırıldı; bellek hatası veya tanımsız davranış bulunmadı.
 - Bir test botu her zorluk ve karakter için 60'ar oyun (toplam 900) oynadı. Her durum satırında sağlık, enerji, oksijen ve hasarın 0–100 aralığında kaldığı, su, parça ve kredinin negatif olmadığı doğrulandı.
 - Rastgele komut ve geçersiz girişlerle oynanan 500 oyunda program hiç takılmadı veya çökmedi.
@@ -188,9 +195,9 @@ Botun kazanma oranları zorluk seviyelerinin birbirinden ayrıştığını göst
 
 | Bot ile kazanma oranı | Mühendis | Jeolog | Doktor | Kimyager | Pilot |
 |---|---|---|---|---|---|
-| Kolay | %100 | %100 | %100 | %100 | %100 |
-| Normal | %68 | %85 | %73 | %93 | %98 |
-| Zor | %38 | %38 | %21 | %78 | %71 |
+| Kolay | %96 | %96 | %100 | %100 | %100 |
+| Normal | %68 | %85 | %65 | %98 | %91 |
+| Zor | %35 | %35 | %33 | %78 | %61 |
 
 Oksijenin tek kaynağı su olduğu için oksijen yeteneği olan Kimyager en kolay karakterdir.
 
