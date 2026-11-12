@@ -45,18 +45,18 @@ Herhangi bir C99 derleyicisi yeterlidir; dış kütüphane gerekmez.
 **macOS / Linux**
 
 ```bash
-gcc -std=c99 -Wall -Wextra -o mars_koloni mars_koloni.c
+gcc -std=c99 -Wall -Wextra -o mars_koloni main.c
 ./mars_koloni
 ```
 
 **Windows (MinGW)**
 
 ```bash
-gcc -std=c99 -Wall -Wextra -o mars_koloni.exe mars_koloni.c
+gcc -std=c99 -Wall -Wextra -o mars_koloni.exe main.c
 mars_koloni.exe
 ```
 
-**Dev-C++ / Code::Blocks / Visual Studio:** `mars_koloni.c` dosyasını yeni bir C projesine ekleyip derleyin.
+**Dev-C++ / Code::Blocks / Visual Studio:** `main.c` dosyasını yeni bir C projesine ekleyip derleyin.
 
 Kod `-std=c99 -Wall -Wextra -pedantic` bayraklarıyla uyarısız derlenir.
 
@@ -205,7 +205,7 @@ Oksijenin tek kaynağı su olduğu için oksijen yeteneği olan Kimyager en kola
 
 ```text
 .
-├── mars_koloni.c   # Simülatörün tüm kaynak kodu
+├── main.c          # Simülatörün tüm kaynak kodu
 ├── README.md       # Bu belge
 └── Rapor.pdf       # Kod mantığını açıklayan proje raporu
 ```
