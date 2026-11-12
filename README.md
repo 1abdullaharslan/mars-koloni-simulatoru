@@ -162,7 +162,7 @@ Mağaza, krediniz yettiği sürece alışverişe devam etmenizi sağlar. Kredini
 Puan = (gün × 100) + sağlık + oksijen − modül hasarı
 ```
 
-Gün katsayısı 100 seçildi; çünkü oyunun asıl hedefi hayatta kalmaktır ve fazladan bir gün, diğer değerlerin toplamından daha değerli olmalıdır. Sağlık ve oksijen, kurtarma anındaki durumun ne kadar iyi olduğunu; modül hasarı ise istasyonun ne kadar korunduğunu gösterir.
+Gün katsayısı 100 seçildi; çünkü oyunun asıl hedefi hayatta kalmaktır ve bir gün fazla yaşamak, sağlığın ya da oksijenin tamamen dolu olmasıyla (100) aynı puanı getirmelidir. 15 günlük bir oyunda puanın 1500'ü günden gelir. Sağlık, oksijen ve modül hasarı 0–100 aralığında olduğu için katsayıları 1'dir; bu değerler aynı güne ulaşan oyuncuları birbirinden ayırır. Sağlık ve oksijen, kurtarma anındaki durumun ne kadar iyi olduğunu; modül hasarı ise istasyonun ne kadar korunduğunu gösterir.
 
 ## Ödev gereksinimleri ve koddaki karşılıkları
 
