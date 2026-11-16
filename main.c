@@ -15,7 +15,7 @@
 //
 // Not: konsolda bozuk cikmasin diye yazilarda Turkce karakter kullanmadim.
 //
-// Derlemek icin: gcc mars_koloni.c -o mars_koloni
+// Derlemek icin: gcc main.c -o main.c
 
 #include <stdio.h>
 #include <stdlib.h>
